@@ -4,7 +4,6 @@
 package com.sampleproject.amountconverter;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,10 +30,16 @@ public class ConverterTest {
 	 * .
 	 */
 	@Test
-	public void testToWords() {
-		assertNotNull(converter);
+	public void testToWordsSingleDigit() {
 		String singleDigit = converter.toWords(9);
-		assertEquals("nine", singleDigit);
+		assertEquals("nine dollars", singleDigit);
+	}
+
+	@Test
+	public void testToWordsSingleDigitWithFraction() {
+		assertEquals("nine and 04/100 dollars", converter.toWords(9.04d));
+		assertEquals("one and 99/100 dollars", converter.toWords(1.99d));
+		assertEquals("three and 43/100 dollars", converter.toWords(3.43d));
 	}
 
 }
