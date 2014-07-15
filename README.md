@@ -11,7 +11,7 @@ Below is control flow of the application.
 #### Sequence Diagram
 ![Sequence Diagram](docs/seq.jpg)
 
-#### Continous delivery and Continous delivery architecture
+#### Continuous delivery and Continuous delivery architecture
 ![Architecture Diagram](docs/arch.jpg)
 
 
