@@ -3,6 +3,8 @@ AmountCalculator
 
 Converts given number to words. Example: Convert 2523.04 to "Two thousand five hundred twenty three and 04/100 dollars
 
+Application URL: [http://amountconverter.cfapps.io/](http://amountconverter.cfapps.io/) 
+
 The application is currently using Spring MVC framework. 
 Below is flow of the application.
 
