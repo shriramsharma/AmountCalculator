@@ -7,6 +7,6 @@ The application is currently using Spring MVC framework.
 Below is flow of the application.
 
 #### Sequence Diagram
-![Sequence Diagram](https://github.com/shriramsharma/AmountCalculator/docs/seq.jpg)
+![Sequence Diagram](docs/seq.jpg)
 
 **Note**: Currently there is limit of amount denomination up till a billion.
