@@ -42,4 +42,20 @@ public class ConverterTest {
 		assertEquals("three and 43/100 dollars", converter.toWords(3.43d));
 	}
 
+	@Test
+	public void testToWordsDoubleDigit() {
+		assertEquals("ten dollars", converter.toWords(10.0d));
+		assertEquals("nineteen dollars", converter.toWords(19.0d));
+		assertEquals("twenty dollars", converter.toWords(20.0d));
+		assertEquals("ninety one dollars", converter.toWords(91.0d));
+		assertEquals("eighty five dollars", converter.toWords(85.0d));
+	}
+
+	@Test
+	public void testToWordsDoubleDigitWithFractions() {
+		assertEquals("eleven and 41/100 dollars", converter.toWords(11.41d));
+		assertEquals("thirty one and 01/100 dollars", converter.toWords(31.01d));
+		assertEquals("fifty four and 99/100 dollars", converter.toWords(54.99d));
+	}
+
 }

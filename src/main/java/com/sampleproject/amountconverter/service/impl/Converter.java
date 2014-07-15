@@ -25,12 +25,15 @@ public class Converter implements IConverter {
 			return "Unsupported number length. Currently the application only supports numbers less 10000";
 
 		int wholeNumber = (int) number;
-		double fraction = (number % 1);
+		double fraction = number - wholeNumber;
 
 		if (wholeNumber == 0)
 			sb.append("Zero");
 		else if (wholeNumber <= 9)
-			sb.append(UNITS[wholeNumber].trim());
+			sb.append(convertSingleDigit(wholeNumber).trim());
+		else if (wholeNumber <= 99) {
+			sb.append(convertDoubleDigit(wholeNumber).trim());
+		}
 
 		if (fraction > 0.0d) {
 			sb.append(" and ");
@@ -40,6 +43,21 @@ public class Converter implements IConverter {
 		}
 
 		sb.append(" dollars");
+		return sb.toString();
+	}
+
+	private String convertSingleDigit(int num) {
+		return UNITS[num];
+	}
+
+	private String convertDoubleDigit(int num) {
+		StringBuffer sb = new StringBuffer();
+		if (num < 20)
+			sb.append(UNITS[num]);
+		else {
+			sb.append(TENS[num / 10]);
+			sb.append(convertSingleDigit(num % 10));
+		}
 		return sb.toString();
 	}
 
