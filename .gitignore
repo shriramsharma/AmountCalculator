@@ -1,3 +1,4 @@
 .settings
 .springBeans
 target
+.DS_Store
