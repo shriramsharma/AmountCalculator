@@ -96,6 +96,9 @@ public class ConverterTest {
 		assertEquals(
 				"one hundred seventy million one hundred forty four thousand four hundred forty eight and 93/100 dollars",
 				converter.toWords(170144448.93d));
+		assertEquals("nine billion and 93/100 dollars", converter.toWords(9000000000.93d));
+		assertEquals("ninety billion and 93/100 dollars", converter.toWords(90000000000.93d));
+		assertEquals("ninety nine billion nine hundred million and 93/100 dollars", converter.toWords(99900000000.93d));
 	}
 
 	@Test
