@@ -70,7 +70,32 @@ public class ConverterTest {
 		assertEquals("two hundred seventy six and 21/100 dollars", converter.toWords(276.21d));
 		assertEquals("six hundred thirty eight and 09/100 dollars", converter.toWords(638.09d));
 		assertEquals("four hundred forty four and 49/100 dollars", converter.toWords(444.49d));
-		assertEquals("seven hundred four and 33/100 dollars", converter.toWords(704.33d));
+		assertEquals("seven hundred four and 30/100 dollars", converter.toWords(704.30d));
+	}
+
+	@Test
+	public void testToWordsLargeDigit() {
+		assertEquals("nine thousand two hundred seventy six dollars", converter.toWords(9276.0d));
+		assertEquals("eleven thousand six hundred thirty eight dollars", converter.toWords(11638.0d));
+		assertEquals("one hundred forty four thousand four hundred forty eight dollars", converter.toWords(144448.0d));
+		assertEquals("one hundred thousand dollars", converter.toWords(100000.0d));
+		assertEquals("one million one hundred forty four thousand four hundred forty eight dollars",
+				converter.toWords(1144448.0d));
+		assertEquals("twenty million one hundred forty four thousand four hundred forty eight dollars",
+				converter.toWords(20144448.0d));
+		assertEquals("one hundred seventy million one hundred forty four thousand four hundred forty eight dollars",
+				converter.toWords(170144448.0d));
+	}
+
+	@Test
+	public void testToWordsLargeDigitWithFractions() {
+		assertEquals("nine thousand two hundred seventy six and 55/100 dollars", converter.toWords(9276.55d));
+		assertEquals("eleven thousand six hundred thirty eight and 83/100 dollars", converter.toWords(11638.83d));
+		assertEquals("one hundred forty four thousand four hundred forty eight and 22/100 dollars",
+				converter.toWords(144448.22d));
+		assertEquals(
+				"one hundred seventy million one hundred forty four thousand four hundred forty eight and 93/100 dollars",
+				converter.toWords(170144448.93d));
 	}
 
 }

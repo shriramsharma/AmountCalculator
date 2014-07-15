@@ -3,7 +3,7 @@
  */
 package com.sampleproject.amountconverter.service.impl;
 
-import java.text.NumberFormat;
+import java.text.DecimalFormat;
 
 import org.springframework.stereotype.Service;
 
@@ -21,21 +21,13 @@ public class Converter implements IConverter {
 
 		StringBuffer sb = new StringBuffer();
 
-		if (number > LIMIT)
-			return "Unsupported number length. Currently the application only supports numbers less 10000";
-
 		int wholeNumber = (int) number;
 		double fraction = number - wholeNumber;
 
-		if (wholeNumber == 0)
-			sb.append("Zero");
-		else if (wholeNumber <= 9)
-			sb.append(convertSingleDigit(wholeNumber).trim());
-		else if (wholeNumber <= 99) {
-			sb.append(convertDoubleDigit(wholeNumber).trim());
-		} else if (wholeNumber <= 999) {
-			sb.append(convertTripleDigit(wholeNumber).trim());
-		}
+		if (wholeNumber > 999)
+			sb.append(convertLargeNums(wholeNumber).trim());
+		else
+			sb.append(convert(wholeNumber));
 
 		if (fraction > 0.0d) {
 			sb.append(" and ");
@@ -48,12 +40,41 @@ public class Converter implements IConverter {
 		return sb.toString();
 	}
 
+	private String convertLargeNums(int wholeNumber) {
+		StringBuffer sb = new StringBuffer();
+		int i = 0;
+		while (wholeNumber > 0) {
+			if (wholeNumber % 1000 > 0) {
+				sb.insert(0, LARGENUMS[i]);
+				sb.insert(0, convert(wholeNumber % 1000));
+				sb.insert(0, " ");
+			}
+			wholeNumber /= 1000;
+			i++;
+		}
+		return sb.toString();
+	}
+
 	private String convertTripleDigit(int wholeNumber) {
 		StringBuffer sb = new StringBuffer();
 		sb.append(UNITS[wholeNumber / 100]);
 		sb.append(" hundred");
 		int num = wholeNumber % 100;
 		sb.append(convertDoubleDigit(num));
+		return sb.toString();
+	}
+
+	private String convert(int wholeNumber) {
+		StringBuffer sb = new StringBuffer();
+		if (wholeNumber == 0)
+			sb.append("Zero");
+		else if (wholeNumber <= 9)
+			sb.append(convertSingleDigit(wholeNumber).trim());
+		else if (wholeNumber <= 99) {
+			sb.append(convertDoubleDigit(wholeNumber).trim());
+		} else if (wholeNumber <= 999) {
+			sb.append(convertTripleDigit(wholeNumber).trim());
+		}
 		return sb.toString();
 	}
 
@@ -73,7 +94,7 @@ public class Converter implements IConverter {
 	}
 
 	private String getFractionInString(double fraction) {
-		NumberFormat nf = NumberFormat.getInstance();
+		DecimalFormat nf = new DecimalFormat("0.00#");
 		nf.setMaximumFractionDigits(2);
 		String fracStrVal = nf.format(fraction);
 		int index = fracStrVal.indexOf(".");
