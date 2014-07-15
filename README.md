@@ -17,7 +17,10 @@ Below is control flow of the application.
 ![Architecture Diagram](docs/arch.jpg)
 
 ###### Continuous Integration
-![Architecture Diagram](docs/ci.jpg)
+![CI Diagram](docs/ci.jpg)
+
+###### Continuous Delivery
+![CD Diagram](docs/cd.jpg)
 
 ---
 
