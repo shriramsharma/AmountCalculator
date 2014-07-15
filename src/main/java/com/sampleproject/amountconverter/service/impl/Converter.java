@@ -33,6 +33,8 @@ public class Converter implements IConverter {
 			sb.append(convertSingleDigit(wholeNumber).trim());
 		else if (wholeNumber <= 99) {
 			sb.append(convertDoubleDigit(wholeNumber).trim());
+		} else if (wholeNumber <= 999) {
+			sb.append(convertTripleDigit(wholeNumber).trim());
 		}
 
 		if (fraction > 0.0d) {
@@ -43,6 +45,15 @@ public class Converter implements IConverter {
 		}
 
 		sb.append(" dollars");
+		return sb.toString();
+	}
+
+	private String convertTripleDigit(int wholeNumber) {
+		StringBuffer sb = new StringBuffer();
+		sb.append(UNITS[wholeNumber / 100]);
+		sb.append(" hundred");
+		int num = wholeNumber % 100;
+		sb.append(convertDoubleDigit(num));
 		return sb.toString();
 	}
 

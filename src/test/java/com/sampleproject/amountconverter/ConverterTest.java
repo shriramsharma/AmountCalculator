@@ -58,4 +58,19 @@ public class ConverterTest {
 		assertEquals("fifty four and 99/100 dollars", converter.toWords(54.99d));
 	}
 
+	@Test
+	public void testToWordsTripleDigit() {
+		assertEquals("one hundred eleven dollars", converter.toWords(111.0d));
+		assertEquals("five hundred thirty one dollars", converter.toWords(531.0d));
+		assertEquals("nine hundred fifty four dollars", converter.toWords(954.0d));
+	}
+
+	@Test
+	public void testToWordsTripleDigitWithFractions() {
+		assertEquals("two hundred seventy six and 21/100 dollars", converter.toWords(276.21d));
+		assertEquals("six hundred thirty eight and 09/100 dollars", converter.toWords(638.09d));
+		assertEquals("four hundred forty four and 49/100 dollars", converter.toWords(444.49d));
+		assertEquals("seven hundred four and 33/100 dollars", converter.toWords(704.33d));
+	}
+
 }
