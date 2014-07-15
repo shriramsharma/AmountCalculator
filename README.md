@@ -11,8 +11,14 @@ Below is control flow of the application.
 #### Sequence Diagram
 ![Sequence Diagram](docs/seq.jpg)
 
-#### Continuous delivery and Continuous delivery architecture
+---
+
+#### Continuous Integration and Continuous delivery architecture
 ![Architecture Diagram](docs/arch.jpg)
 
+###### Continuous Integration
+![Architecture Diagram](docs/ci.jpg)
+
+---
 
 **Note**: Currently there is limit of amount denomination up till a billion.
