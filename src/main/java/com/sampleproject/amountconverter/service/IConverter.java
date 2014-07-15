@@ -9,7 +9,7 @@ package com.sampleproject.amountconverter.service;
  */
 public interface IConverter {
 
-	public static final double LIMIT = 100000000.0d;
+	public static final double LIMIT = 100000000000.0d;
 
 	public static final String[] TENS = { "", " ten", " twenty", " thirty", " forty", " fifty", " sixty", " seventy",
 			" eighty", " ninety" };

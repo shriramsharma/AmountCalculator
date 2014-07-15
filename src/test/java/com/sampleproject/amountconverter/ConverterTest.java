@@ -98,4 +98,10 @@ public class ConverterTest {
 				converter.toWords(170144448.93d));
 	}
 
+	@Test
+	public void testToWordsExceedLimit() {
+		assertEquals("WOW!! thats a lot of money. Unfortunately the conversion cannot handle such large amount.",
+				converter.toWords(1000000000000.0d));
+	}
+
 }

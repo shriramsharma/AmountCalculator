@@ -21,6 +21,9 @@ public class Converter implements IConverter {
 
 		StringBuffer sb = new StringBuffer();
 
+		if (number > LIMIT)
+			return "WOW!! thats a lot of money. Unfortunately the conversion cannot handle such large amount.";
+
 		int wholeNumber = (int) number;
 		double fraction = number - wholeNumber;
 
